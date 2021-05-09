@@ -27,9 +27,18 @@ import BonfidaApi from './bonfidaConnector';
 // Used in debugging, should be false in production
 const _IGNORE_DEPRECATED = false;
 
+const samoUSDCMarketsInfo = {
+  address: new PublicKey("FR3SPJmgfRSKKQ2ysUZBu7vJLpzTixXnjzb84bY3Diif"),
+  deprecated: false,
+  name : "SAMO/USDC",
+  quoteLabel: "SAMO",
+  baseLabel: "USDC",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+
 export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
-  ? MARKETS.map((m) => ({ ...m, deprecated: false }))
-  : MARKETS;
+  ? MARKETS.concat(samoUSDCMarketsInfo).map((m) => ({ ...m, deprecated: false }))
+  : MARKETS.concat(samoUSDCMarketsInfo);
 
 export function useMarketsList() {
   return USE_MARKETS.filter(({ name, deprecated }) => !deprecated && !process.env.REACT_APP_EXCLUDE_MARKETS?.includes(name));
@@ -158,8 +167,8 @@ const _SLOW_REFRESH_INTERVAL = 5 * 1000;
 // For things that change frequently
 const _FAST_REFRESH_INTERVAL = 1000;
 
-export const DEFAULT_MARKET = USE_MARKETS.find(
-  ({ name, deprecated }) => name === 'SAMO/USDC',
+export const DEFAULT_MARKET = USE_MARKETS.concat(samoUSDCMarketsInfo).find(
+  ({ name, deprecated }) => name === 'SAMO/USDC' && !deprecated,
 );
 
 export function getMarketDetails(
@@ -1086,23 +1095,14 @@ export function useBalancesForDeprecatedMarkets() {
 export function getMarketInfos(
   customMarkets: CustomMarketInfo[],
 ): MarketInfo[] {
-
-  const samoUSDCMarketsInfo = {
-    address: new PublicKey("FR3SPJmgfRSKKQ2ysUZBu7vJLpzTixXnjzb84bY3Diif"),
+  const customMarketsInfo = customMarkets.map((m) => ({
+    ...m,
+    address: new PublicKey(m.address),
+    programId: new PublicKey(m.programId),
     deprecated: false,
-    name : "SAMO/USDC",
-    quoteLabel: "SAMO",
-    baseLabel: "USDC",
-    programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
-  };
+  }));
 
-  if (USE_MARKETS.find(e => e.name === 'SAMO/USDC') === undefined) {
-    USE_MARKETS.push(samoUSDCMarketsInfo);
-  }
-
-  console.info(USE_MARKETS);
-
-  return [...USE_MARKETS];
+  return [...customMarketsInfo, ...USE_MARKETS];
 }
 
 export function useMarketInfos() {
