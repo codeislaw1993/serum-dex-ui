@@ -159,7 +159,7 @@ const _SLOW_REFRESH_INTERVAL = 5 * 1000;
 const _FAST_REFRESH_INTERVAL = 1000;
 
 export const DEFAULT_MARKET = USE_MARKETS.find(
-  ({ name, deprecated }) => name === 'SAMO/USDT' && !deprecated,
+  ({ name, deprecated }) => name === 'SAMO/USDC',
 );
 
 export function getMarketDetails(
@@ -1086,23 +1086,26 @@ export function useBalancesForDeprecatedMarkets() {
 export function getMarketInfos(
   customMarkets: CustomMarketInfo[],
 ): MarketInfo[] {
-  const customMarketsInfo = customMarkets.map((m) => ({
-    ...m,
-    address: new PublicKey(m.address),
-    programId: new PublicKey(m.programId),
-    deprecated: false,
-  }));
 
   const samoUSDCMarketsInfo = {
     address: new PublicKey("FR3SPJmgfRSKKQ2ysUZBu7vJLpzTixXnjzb84bY3Diif"),
     deprecated: false,
-    name: "SAMO/USDC",
-    programId: new PublicKey("4ckmDgGdxQoPDLUkDT3vHgSAkzA3QRdNq5ywwY4sUSJn")
+    name : "SAMO/USDC",
+    quoteLabel: "SAMO",
+    baseLabel: "USDC",
+    programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
   };
+  console.info(USE_MARKETS);
 
-  customMarketsInfo.push(samoUSDCMarketsInfo);
+  console.info(samoUSDCMarketsInfo);
 
-  return [...customMarketsInfo, ...USE_MARKETS];
+  if (USE_MARKETS.find(e => e.name === 'SAMO/USDC') === undefined) {
+    USE_MARKETS.push(samoUSDCMarketsInfo);
+  }
+
+  console.info(USE_MARKETS);
+
+  return [...USE_MARKETS];
 }
 
 export function useMarketInfos() {
