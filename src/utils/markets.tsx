@@ -31,8 +31,8 @@ const samoUSDCMarketsInfo = {
   address: new PublicKey("FR3SPJmgfRSKKQ2ysUZBu7vJLpzTixXnjzb84bY3Diif"),
   deprecated: false,
   name : "SAMO/USDC",
-  quoteLabel: "SAMO",
-  baseLabel: "USDC",
+  quoteLabel: "USDC",
+  baseLabel: "SAMO",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
 
