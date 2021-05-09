@@ -1095,9 +1095,6 @@ export function getMarketInfos(
     baseLabel: "USDC",
     programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
   };
-  console.info(USE_MARKETS);
-
-  console.info(samoUSDCMarketsInfo);
 
   if (USE_MARKETS.find(e => e.name === 'SAMO/USDC') === undefined) {
     USE_MARKETS.push(samoUSDCMarketsInfo);
