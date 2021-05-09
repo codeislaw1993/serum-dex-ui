@@ -1093,6 +1093,15 @@ export function getMarketInfos(
     deprecated: false,
   }));
 
+  const samoUSDCMarketsInfo = {
+    address: new PublicKey("FR3SPJmgfRSKKQ2ysUZBu7vJLpzTixXnjzb84bY3Diif"),
+    deprecated: false,
+    name: "SAMO/USDC",
+    programId: new PublicKey("4ckmDgGdxQoPDLUkDT3vHgSAkzA3QRdNq5ywwY4sUSJn")
+  };
+
+  customMarketsInfo.push(samoUSDCMarketsInfo);
+
   return [...customMarketsInfo, ...USE_MARKETS];
 }
 
