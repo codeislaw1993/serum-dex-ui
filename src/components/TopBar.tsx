@@ -47,6 +47,10 @@ const EXTERNAL_LINKS = {
   '/developer-resources': 'https://serum-academy.com/en/developer-resources/',
   '/explorer': 'https://explorer.solana.com',
   '/srm-faq': 'https://projectserum.com/srm-faq',
+  '/discord': 'https://discord.gg/mD38zFCdYH',
+  '/telegram': 'https://t.me/samoyedlovers',
+  '/github': 'https://github.com/codeislaw1993/serum-dex-ui',
+  '/twitter': 'https://twitter.com/lover_samoyed',
 };
 
 export default function TopBar() {
@@ -167,6 +171,50 @@ export default function TopBar() {
             <Menu.Item key="/list-new-market" style={{ margin: '0 10px' }}>
               ADD MARKET
             </Menu.Item>
+          )}
+          {(!searchFocussed || location.pathname === '/twitter') && (
+              <Menu.Item key="/twitter" style={{ margin: '0 10px' }}>
+                <a
+                    href={EXTERNAL_LINKS['/twitter']}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                  TWITTER
+                </a>
+              </Menu.Item>
+          )}
+          {(!searchFocussed || location.pathname === '/github') && (
+              <Menu.Item key="/github" style={{ margin: '0 10px' }}>
+                <a
+                    href={EXTERNAL_LINKS['/github']}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                  GITHUB
+                </a>
+              </Menu.Item>
+          )}
+          {(!searchFocussed || location.pathname === '/telegram') && (
+              <Menu.Item key="/telegram" style={{ margin: '0 10px' }}>
+                <a
+                    href={EXTERNAL_LINKS['/telegram']}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                  TELEGRAM
+                </a>
+              </Menu.Item>
+          )}
+          {(!searchFocussed || location.pathname === '/discord') && (
+              <Menu.Item key="/discord" style={{ margin: '0 10px' }}>
+                <a
+                    href={EXTERNAL_LINKS['/discord']}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                  DISCORD
+                </a>
+              </Menu.Item>
           )}
           {!searchFocussed && (
             <Menu.SubMenu
