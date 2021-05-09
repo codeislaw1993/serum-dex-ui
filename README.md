@@ -1,4 +1,4 @@
-# Serum DEX UI
+# Samoyed Lover Buy Samoyed
 
 An implementation of a UI for the Serum DEX.
 
