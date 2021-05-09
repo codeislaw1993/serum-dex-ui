@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 html,body{
-  background: #11161D;
+  background: #ffffff;
 }
 input[type=number]::-webkit-inner-spin-button {
   opacity: 0;
@@ -17,18 +17,18 @@ input[type=number]:focus::-webkit-inner-spin-button {
 }
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #2d313c;
+  background: #ffffff;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #5b5f67;
+  background: #ffffff;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #5b5f67;
+  background: #ffffff;
 }
 .ant-slider-track, .ant-slider:hover .ant-slider-track {
-  background-color: #2abdd2;
+  background-color: #ffffff;
   opacity: 0.75;
 }
 .ant-slider-track,
