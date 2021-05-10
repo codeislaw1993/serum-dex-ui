@@ -25,6 +25,7 @@ import WalletConnect from './WalletConnect';
 import { SwapOutlined } from '@ant-design/icons';
 import { CustomMarketInfo } from '../utils/types';
 import { WalletAdapter } from '../wallet-adapters';
+import StandaloneBalancesDisplay from '../components/StandaloneBalancesDisplay';
 
 const { Option } = Select;
 const { Title } = Typography;
@@ -95,7 +96,7 @@ export default function ConvertForm() {
 
   return (
     <FloatingElement style={{ maxWidth: 500 }}>
-      <Title level={3}>Convert</Title>
+      <Title level={3}>Swap</Title>
       {!connected && (
         <Row justify="center">
           <Col>
@@ -154,6 +155,7 @@ export default function ConvertForm() {
                 wallet={wallet}
                 customMarkets={customMarkets}
               />
+              <StandaloneBalancesDisplay/>
             </MarketProvider>
           )}
         </>
@@ -387,7 +389,7 @@ function ConvertFormSubmit({
             onClick={onConvert}
             disabled={!canConvert}
           >
-            Convert
+            Swap
           </ConvertButton>
         </Col>
       </Row>

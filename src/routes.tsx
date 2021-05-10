@@ -9,7 +9,6 @@ import ListNewMarketPage from './pages/ListNewMarketPage';
 import NewPoolPage from './pages/pools/NewPoolPage';
 import PoolPage from './pages/pools/PoolPage';
 import PoolListPage from './pages/pools/PoolListPage';
-import { getTradePageUrl } from './utils/markets';
 
 export function Routes() {
   return (
@@ -18,14 +17,14 @@ export function Routes() {
         <BasicLayout>
           <Switch>
             <Route exact path="/">
-              <Redirect to={getTradePageUrl()} />
+              <Redirect to={'/convert'} />
             </Route>
+            <Route exact path="/convert" component={ConvertPage} />
             <Route exact path="/market/:marketAddress">
               <TradePage />
             </Route>
             <Route exact path="/orders" component={OpenOrdersPage} />
             <Route exact path="/balances" component={BalancesPage} />
-            <Route exact path="/convert" component={ConvertPage} />
             <Route
               exact
               path="/list-new-market"

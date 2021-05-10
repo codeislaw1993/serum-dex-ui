@@ -1,7 +1,6 @@
 import { Layout } from 'antd';
 import React from 'react';
 import TopBar from './TopBar';
-import { CustomFooter as Footer } from './Footer';
 const { Header, Content } = Layout;
 
 export default function BasicLayout({ children }) {
@@ -14,7 +13,6 @@ export default function BasicLayout({ children }) {
           <TopBar />
         </Header>
         <Content style={{ flex: 1 }}>{children}</Content>
-        <Footer />
       </Layout>
     </React.Fragment>
   );

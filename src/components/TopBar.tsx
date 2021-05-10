@@ -2,6 +2,9 @@ import {
   InfoCircleOutlined,
   PlusCircleOutlined,
   SettingOutlined,
+  TwitterOutlined,
+  GithubOutlined,
+  SendOutlined,
 } from '@ant-design/icons';
 import { Button, Col, Menu, Popover, Row, Select } from 'antd';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -160,16 +163,16 @@ export default function TopBar() {
           }}
         >
           <Menu.Item key={tradePageUrl} style={{ margin: '0 10px 0 20px' }}>
-            TRADE
+            Order book
           </Menu.Item>
           {(!searchFocussed || location.pathname === '/convert') && (
             <Menu.Item key="/convert" style={{ margin: '0 10px' }}>
-              CONVERT
+              Swap
             </Menu.Item>
           )}
           {(!searchFocussed || location.pathname === '/list-new-market') && (
             <Menu.Item key="/list-new-market" style={{ margin: '0 10px' }}>
-              ADD MARKET
+              Add Market
             </Menu.Item>
           )}
           {(!searchFocussed || location.pathname === '/twitter') && (
@@ -179,7 +182,7 @@ export default function TopBar() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                  TWITTER
+                  <TwitterOutlined />
                 </a>
               </Menu.Item>
           )}
@@ -190,7 +193,7 @@ export default function TopBar() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                  GITHUB
+                  <GithubOutlined />
                 </a>
               </Menu.Item>
           )}
@@ -201,24 +204,13 @@ export default function TopBar() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                  TELEGRAM
-                </a>
-              </Menu.Item>
-          )}
-          {(!searchFocussed || location.pathname === '/discord') && (
-              <Menu.Item key="/discord" style={{ margin: '0 10px' }}>
-                <a
-                    href={EXTERNAL_LINKS['/discord']}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                  DISCORD
+                  <SendOutlined />
                 </a>
               </Menu.Item>
           )}
           {!searchFocussed && (
             <Menu.SubMenu
-              title="LEARN"
+              title="Documentations"
               onTitleClick={() =>
                 window.open(EXTERNAL_LINKS['/learn'], '_blank')
               }
@@ -283,7 +275,7 @@ export default function TopBar() {
         </Menu>
         <div
           style={{
-            display: 'flex',
+            display: 'none',
             alignItems: 'center',
             paddingRight: 5,
           }}
@@ -295,7 +287,7 @@ export default function TopBar() {
             width={searchFocussed ? '350px' : '35px'}
           />
         </div>
-        <div>
+        <div style={{display: 'none'}}>
           <Row
             align="middle"
             style={{ paddingLeft: 5, paddingRight: 5 }}

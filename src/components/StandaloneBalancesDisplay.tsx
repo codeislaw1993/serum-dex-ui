@@ -12,7 +12,6 @@ import {
 } from '../utils/markets';
 import DepositDialog from './DepositDialog';
 import {useWallet} from '../utils/wallet';
-import Link from './Link';
 import {settleFunds} from '../utils/send';
 import {useSendConnection} from '../utils/connection';
 import {notify} from '../utils/notifications';
@@ -27,11 +26,6 @@ const RowBox = styled(Row)`
   padding-bottom: 20px;
 `;
 
-const Tip = styled.p`
-  font-size: 12px;
-  padding-top: 6px;
-`;
-
 const ActionButton = styled(Button)`
   color: #2abdd2;
   background-color: #212734;
@@ -43,7 +37,7 @@ export default function StandaloneBalancesDisplay() {
   const balances = useBalances();
   const openOrdersAccount = useSelectedOpenOrdersAccount(true);
   const connection = useSendConnection();
-  const { providerUrl, providerName, wallet, connected } = useWallet();
+  const { wallet, connected } = useWallet();
   const [baseOrQuote, setBaseOrQuote] = useState('');
   const baseCurrencyAccount = useSelectedBaseCurrencyAccount();
   const quoteCurrencyAccount = useSelectedQuoteCurrencyAccount();
@@ -222,27 +216,11 @@ export default function StandaloneBalancesDisplay() {
             </RowBox>
             <RowBox align="middle" justify="space-around">
               <Col style={{ width: 150 }}>
-                <ActionButton
-                  block
-                  size="large"
-                  onClick={() => setBaseOrQuote(baseOrQuote)}
-                >
-                  Deposit
-                </ActionButton>
-              </Col>
-              <Col style={{ width: 150 }}>
                 <ActionButton block size="large" onClick={onSettleFunds}>
                   Settle
                 </ActionButton>
               </Col>
             </RowBox>
-            <Tip>
-              All deposits go to your{' '}
-              <Link external to={providerUrl}>
-                {providerName}
-              </Link>{' '}
-              wallet
-            </Tip>
           </React.Fragment>
         ),
       )}
