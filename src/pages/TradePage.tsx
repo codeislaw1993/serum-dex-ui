@@ -78,7 +78,7 @@ function TradePageInner() {
   });
 
   useEffect(() => {
-    document.title = marketName ? `${marketName} — Samoyed Lover Buy Samoyed` : 'Samoyed Lover Buy Samoyeds';
+    document.title = marketName ? `${marketName} — Samoyed DEX` : 'Samoyed DEX';
   }, [marketName]);
 
   const changeOrderRef = useRef<
