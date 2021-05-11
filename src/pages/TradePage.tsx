@@ -15,6 +15,7 @@ import {
 import TradeForm from '../components/TradeForm';
 import TradesTable from '../components/TradesTable';
 import LinkAddress from '../components/LinkAddress';
+import { TVChartContainer } from '../components/TradingView';
 import DeprecatedMarketsInstructions from '../components/DeprecatedMarketsInstructions';
 import {
   DeleteOutlined,
@@ -329,27 +330,25 @@ const DeprecatedMarketsPage = ({ switchToLiveMarkets }) => {
 
 const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
-    <Row
-      style={{
-        minHeight: '900px',
-        flexWrap: 'nowrap',
-      }}
-    >
-      <Col flex="auto" style={{ height: '100%', display: 'flex' }}>
-        <UserInfoTable />
-      </Col>
-      <Col flex={'360px'} style={{ height: '100%' }}>
-        <Orderbook smallScreen={false} onPrice={onPrice} onSize={onSize} />
-        <TradesTable smallScreen={false} />
-      </Col>
-      <Col
-        flex="400px"
-        style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-      >
-        <TradeForm setChangeOrderRef={onChangeOrderRef} />
-        <StandaloneBalancesDisplay />
-      </Col>
-    </Row>
+      <Wrapper>
+        <Row>
+          <Col flex={'360px'} style={{ height: '100%' }}>
+            <Orderbook smallScreen={false} onPrice={onPrice} onSize={onSize} />
+            <TradesTable smallScreen={false} />
+          </Col>
+          <Col>
+            <TVChartContainer/>
+            <UserInfoTable />
+          </Col>
+          <Col
+            flex="400px"
+            style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+          >
+            <TradeForm setChangeOrderRef={onChangeOrderRef} />
+            <StandaloneBalancesDisplay />
+          </Col>
+        </Row>
+      </Wrapper>
   );
 };
 
@@ -383,6 +382,7 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
       <Row>
         <Col flex="auto">
           <UserInfoTable />
+          <TVChartContainer/>
         </Col>
       </Row>
     </>
@@ -410,6 +410,7 @@ const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
         </Col>
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
           <TradesTable smallScreen={true} />
+          <TVChartContainer />
         </Col>
       </Row>
       <Row>

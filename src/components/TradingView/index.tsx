@@ -4,6 +4,7 @@ import {
   widget,
   ChartingLibraryWidgetOptions,
   IChartingLibraryWidget,
+  ResolutionString,
 } from '../../charting_library/charting_library.min'; // Make sure to follow step 1 of the README
 import { useMarket } from '../../utils/markets';
 import { BONFIDA_DATA_FEED } from '../../utils/bonfidaConnector';
@@ -34,6 +35,7 @@ export const TVChartContainer = () => {
   // @ts-ignore
   const defaultProps: ChartContainerProps = {
     symbol: 'BTC/USDC',
+    interval: '60' as ResolutionString,
     theme: 'Dark',
     containerId: 'tv_chart_container',
     datafeedUrl: BONFIDA_DATA_FEED,

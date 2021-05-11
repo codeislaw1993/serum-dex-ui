@@ -4,6 +4,7 @@ import ConvertForm from '../components/ConvertForm';
 import { Row, Col } from 'antd';
 import { DEFAULT_MARKET, MarketProvider } from '../utils/markets';
 import { useLocalStorageState } from '../utils/utils';
+import {TVChartContainer} from "../components/TradingView";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -21,17 +22,20 @@ export default function ConvertPage() {
     DEFAULT_MARKET?.address.toBase58(),
   );
   return (
-    <Wrapper style={{ flex: 1, paddingTop: 10 }}>
-      <Row justify="center">
-        <Col>
-          <MarketProvider
-            marketAddress={marketAddress}
-            setMarketAddress={setMarketAddress}
-          >
+      <MarketProvider
+          marketAddress={marketAddress}
+          setMarketAddress={setMarketAddress}
+      >
+      <Wrapper style={{ flex: 1, paddingTop: 10 }}>
+        <Row justify="center">
+          <Col>
+            <TVChartContainer/>
+          </Col>
+          <Col>
             <ConvertForm />
-          </MarketProvider>
-        </Col>
-      </Row>
-    </Wrapper>
+          </Col>
+        </Row>
+      </Wrapper>
+      </MarketProvider>
   );
 }
