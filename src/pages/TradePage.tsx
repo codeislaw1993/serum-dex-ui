@@ -332,20 +332,22 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
       <Wrapper>
         <Row>
-          <Col flex={'360px'} style={{ height: '100%' }}>
-            <Orderbook smallScreen={false} onPrice={onPrice} onSize={onSize} />
-            <TradesTable smallScreen={false} />
+          <Col
+              flex="400px"
+              style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+          >
+            <TradeForm setChangeOrderRef={onChangeOrderRef} />
+            <StandaloneBalancesDisplay />
           </Col>
+
           <Col>
             <TVChartContainer/>
             <UserInfoTable />
           </Col>
-          <Col
-            flex="400px"
-            style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-          >
-            <TradeForm setChangeOrderRef={onChangeOrderRef} />
-            <StandaloneBalancesDisplay />
+
+          <Col flex={'360px'} style={{ height: '100%' }}>
+            <Orderbook smallScreen={false} onPrice={onPrice} onSize={onSize} />
+            <TradesTable smallScreen={false} />
           </Col>
         </Row>
       </Wrapper>
