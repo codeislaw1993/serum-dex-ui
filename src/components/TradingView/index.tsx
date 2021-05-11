@@ -4,8 +4,7 @@ import {
   widget,
   ChartingLibraryWidgetOptions,
   IChartingLibraryWidget,
-  ResolutionString,
-} from '../../charting_library'; // Make sure to follow step 1 of the README
+} from '../../charting_library/charting_library.min'; // Make sure to follow step 1 of the README
 import { useMarket } from '../../utils/markets';
 import { BONFIDA_DATA_FEED } from '../../utils/bonfidaConnector';
 import { findTVMarketFromAddress } from '../../utils/tradingview';
@@ -35,13 +34,12 @@ export const TVChartContainer = () => {
   // @ts-ignore
   const defaultProps: ChartContainerProps = {
     symbol: 'BTC/USDC',
-    interval: '60' as ResolutionString,
     theme: 'Dark',
     containerId: 'tv_chart_container',
     datafeedUrl: BONFIDA_DATA_FEED,
     libraryPath: '/charting_library/',
     fullscreen: false,
-    autosize: true,
+    autosize: false,
     studiesOverrides: {},
   };
 
@@ -70,14 +68,14 @@ export const TVChartContainer = () => {
       fullscreen: defaultProps.fullscreen,
       autosize: defaultProps.autosize,
       studies_overrides: defaultProps.studiesOverrides,
-      theme: 'Dark',
+      theme: 'Dark'
     };
 
     const tvWidget = new widget(widgetOptions);
     tvWidgetRef.current = tvWidget;
 
+    // tslint:disable-next-line:no-unused-expression
     tvWidget.onChartReady(() => {
-      tvWidget.headerReady().then(() => {
         const button = tvWidget.createButton();
         button.setAttribute('title', 'Click to show a notification popup');
         button.classList.add('apply-common-tooltip');
@@ -91,8 +89,9 @@ export const TVChartContainer = () => {
           }),
         );
         button.innerHTML = 'Check API';
-      });
     });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [market]);
 
   return <div id={defaultProps.containerId} className="tradingview-chart" />;
