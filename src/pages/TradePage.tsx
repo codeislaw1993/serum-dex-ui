@@ -338,7 +338,6 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
     >
       <Col flex="auto" style={{ height: '100%', display: 'flex' }}>
         <UserInfoTable />
-        <TVChartContainer/>
       </Col>
       <Col flex={'360px'} style={{ height: '100%' }}>
         <Orderbook smallScreen={false} onPrice={onPrice} onSize={onSize} />
@@ -385,7 +384,6 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
       <Row>
         <Col flex="auto">
           <UserInfoTable />
-          <TVChartContainer/>
         </Col>
       </Row>
     </>
@@ -413,7 +411,6 @@ const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
         </Col>
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
           <TradesTable smallScreen={true} />
-          <TVChartContainer />
         </Col>
       </Row>
       <Row>
